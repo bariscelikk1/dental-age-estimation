@@ -2,7 +2,7 @@
 
 Bu çalışmada, panoramik diş röntgeninden yaş tahmini için beş CNN modeli aynı koşullarda karşılaştırılmıştır.
 
-**TÜBİTAK 2209-A ön çalışması, 1. kısım** · Hazırlayan: Nurullah Barış Çelik · Danışman: Prof. Dr. Selami Beyhan
+TÜBİTAK 2209-A ön çalışması, 1. kısım · Hazırlayan: Nurullah Barış Çelik · Danışman: Prof. Dr. Selami Beyhan
 
 Yöntem ve sonuçların ayrıntıları [not defterinde](dental_age_comparison.ipynb) yer almaktadır. `dental_age_comparison.html` dosyası kurulum gerektirmeden tarayıcıda görüntülenebilir.
 
@@ -12,7 +12,7 @@ Temizlik sonrası 294 görüntü, 9-19 yaş, 5 katlı çapraz doğrulama.
 
 | Sıra | Model | MAE (yıl) | %95 güven aralığı | R² | ±2 yıl içinde | Parametre |
 |---|---|---|---|---|---|---|
-| 1 | **ConvNeXt-Tiny** | **1,06** | 0,96–1,16 | 0,68 | %85,0 | 27,8 M |
+| 1 | ConvNeXt-Tiny | 1,06 | 0,96–1,16 | 0,68 | %85,0 | 27,8 M |
 | 2 | ResNet-50 | 1,11 | 1,01–1,21 | 0,67 | %85,4 | 23,5 M |
 | 3 | EfficientNet-B0 | 1,14 | 1,04–1,24 | 0,65 | %84,7 | 4,0 M |
 | 4 | Xception | 1,20 | 1,10–1,32 | 0,61 | %79,9 | 20,8 M |
