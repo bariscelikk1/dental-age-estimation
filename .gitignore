@@ -1,0 +1,13 @@
+# Ortam
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+
+# Veri: görüntüler repoya konmaz
+data/
+
+# Çalışma dosyaları
+results_dry/
+results_run.log
+teslim/
