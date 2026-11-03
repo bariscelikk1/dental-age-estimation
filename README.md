@@ -1,10 +1,10 @@
 # Panoramik Röntgenden Dental Yaş Tahmini
 
-Panoramik diş röntgeninden kişinin yaşını tahmin etmek için beş CNN modelinin aynı koşullarda karşılaştırılması.
+Bu çalışmada, panoramik diş röntgeninden yaş tahmini için beş CNN modeli aynı koşullarda karşılaştırılmıştır.
 
 **TÜBİTAK 2209-A ön çalışması, 1. kısım** · Hazırlayan: Nurullah Barış Çelik · Danışman: Prof. Dr. Selami Beyhan
 
-Sonuçlar ve açıklamalar için [not defterini](dental_age_comparison.ipynb) açın. Kurulumsuz görmek için `dental_age_comparison.html` dosyasını indirip tarayıcıda açabilirsiniz.
+Yöntem ve sonuçların ayrıntıları [not defterinde](dental_age_comparison.ipynb) yer almaktadır. `dental_age_comparison.html` dosyası kurulum gerektirmeden tarayıcıda görüntülenebilir.
 
 ## Sonuçlar
 
@@ -17,11 +17,11 @@ Temizlik sonrası 294 görüntü, 9-19 yaş, 5 katlı çapraz doğrulama.
 | 3 | EfficientNet-B0 | 1,14 | 1,04–1,24 | 0,65 | %84,7 | 4,0 M |
 | 4 | Xception | 1,20 | 1,10–1,32 | 0,61 | %79,9 | 20,8 M |
 | 5 | DenseNet-121 | 1,20 | 1,11–1,30 | 0,63 | %83,7 | 7,0 M |
-| – | *Taban çizgisi (hep ortanca yaşı söylemek)* | *2,04* | | *−0,15* | *%69,7* | |
+| – | *Taban çizgisi (tüm görüntüler için ortanca yaş)* | *2,04* | | *−0,15* | *%69,7* | |
 
-- Beş model de taban çizgisinin hatasını yaklaşık yarıya indiriyor.
-- Net bir kazanan yok: Friedman testi anlamlı değil (p = 0,084).
-- Bunlar ön sonuçlardır: veri az, yaş aralığı dar, dış doğrulama yok. Adli kullanım için yeterli değildir.
+- Beş modelin tamamı, taban çizgisinin hatasını yaklaşık yarıya indirmektedir.
+- En düşük hata ConvNeXt-Tiny ile elde edilmiştir; ancak Friedman testi anlamlı bulunmamıştır (p = 0,084).
+- Sonuçlar, şu an erişilebilen Zenodo veri setinde elde edilmiştir ve ön sonuç niteliğindedir. Örneklem küçük, yaş aralığı dardır; dış doğrulama yapılmamıştır. Sonuçlar adli kullanım için yeterli değildir.
 
 ## Klasörler
 
@@ -41,10 +41,10 @@ Python 3.12 ile:
 pip install -r requirements.txt
 ```
 
-1. Görüntüleri [Zenodo](https://doi.org/10.5281/zenodo.16745408) üzerinden indirin.
-2. `data/zenodo_16745408/extracted/dataset ++/` klasörüne çıkarın.
-3. Not defterini çalıştırın. `results/` içindeki hazır sonuçlar kullanıldığı için eğitim tekrarlanmaz. Eğitimi baştan yapmak için oradaki `.json` dosyalarını silin.
+1. Görüntüler [Zenodo](https://doi.org/10.5281/zenodo.16745408) üzerinden indirilir.
+2. Dosyalar `data/zenodo_16745408/extracted/dataset ++/` klasörüne çıkarılır.
+3. Not defteri çalıştırılır. `results/` içindeki kayıtlı sonuçlar kullanıldığından eğitim tekrarlanmaz. Eğitimi yeniden yapmak için bu klasördeki `.json` dosyaları silinmelidir.
 
 ## Veri
 
-Görüntüler bu repoda yoktur. Not defterindeki örnek röntgenler Zenodo 16745408 setinden alınmıştır (CC BY 4.0).
+Görüntüler bu depoda bulunmamaktadır. Not defterindeki örnek röntgenler Zenodo 16745408 setinden alınmıştır (CC BY 4.0).

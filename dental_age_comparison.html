@@ -7796,7 +7796,7 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=35dea87d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=982c540e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7804,12 +7804,12 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="Panoramik-R%C3%B6ntgenden-Dental-Ya%C5%9F-Tahmini:-Be%C5%9F-CNN-Modelinin-Kar%C5%9F%C4%B1la%C5%9Ft%C4%B1r%C4%B1lmas%C4%B1">Panoramik Röntgenden Dental Yaş Tahmini: Beş CNN Modelinin Karşılaştırılması<a class="anchor-link" href="#Panoramik-R%C3%B6ntgenden-Dental-Ya%C5%9F-Tahmini:-Be%C5%9F-CNN-Modelinin-Kar%C5%9F%C4%B1la%C5%9Ft%C4%B1r%C4%B1lmas%C4%B1">¶</a></h1><p><strong>TÜBİTAK 2209-A ön çalışması, 1. kısım</strong> · Hazırlayan: Nurullah Barış Çelik · Danışman: Prof. Dr. Selami Beyhan</p>
 <p><strong>Amaç:</strong> Panoramik diş röntgeninden kişinin yaşını tahmin etmek ve ConvNeXt-Tiny, Xception, DenseNet-121, EfficientNet-B0 ile ResNet-50 modellerini aynı koşullarda karşılaştırmak.</p>
-<p>Her adımın altında ne yapıldığı ve neden yapıldığı açıklanmıştır.</p>
+<p>Her adımda yapılan işlem ve gerekçesi açıklanmıştır.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d5568f81">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3a52afd9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7875,7 +7875,7 @@ a.anchor-link {
 </tr>
 <tr>
 <td>–</td>
-<td><em>Taban çizgisi (hep ortanca yaşı söylemek)</em></td>
+<td><em>Taban çizgisi (tüm görüntüler için ortanca yaş)</em></td>
 <td><em>2,04</em></td>
 <td></td>
 <td><em>−0,15</em></td>
@@ -7885,21 +7885,21 @@ a.anchor-link {
 </tbody>
 </table>
 <ul>
-<li>Beş model de taban çizgisinin hatasını yaklaşık yarıya indiriyor.</li>
-<li><strong>Net bir kazanan yok.</strong> ConvNeXt-Tiny önde, ama beş modeli birlikte sınayan Friedman testi anlamlı değil (p = 0,084).</li>
-<li><strong>Önemli sınır:</strong> Bu sonuçlar, hocamızın ölçütünü karşılayan UFPE setinde değil, açık erişimli 294 görüntülük (temizlik sonrası), 9-19 yaş aralığındaki Zenodo setinde elde edildi. UFPE erişime açılana kadar ön sonuç olarak görülmelidir.</li>
+<li>Beş modelin tamamı, taban çizgisinin hatasını yaklaşık yarıya indirmektedir.</li>
+<li>En düşük hata ConvNeXt-Tiny ile elde edilmiştir; ancak beş modeli birlikte sınayan Friedman testi anlamlı bulunmamıştır (p = 0,084). Bu nedenle modeller arasında kesin bir sıralama yapılamamaktadır.</li>
+<li><strong>Kapsam:</strong> Sonuçlar, şu an erişilebilen açık erişimli Zenodo veri setinde (temizlik sonrası 294 görüntü, 9-19 yaş) elde edilmiştir ve ön sonuç niteliğindedir.</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e83f43eb">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d5dd7ef1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.-Veri-setinin-se%C3%A7imi">1. Veri setinin seçimi<a class="anchor-link" href="#1.-Veri-setinin-se%C3%A7imi">¶</a></h2><p>Hocamızın ölçütü: <strong>en çok veriye ve en geniş yaş aralığına sahip veri seti.</strong> Beş kaynak tek tek kontrol edildi:</p>
+<h2 id="1.-Veri-setinin-se%C3%A7imi">1. Veri setinin seçimi<a class="anchor-link" href="#1.-Veri-setinin-se%C3%A7imi">¶</a></h2><p>Veri seti seçiminde görüntü sayısı, yaş aralığı, yaş etiketi ve erişim durumu dikkate alınmıştır. İncelenen beş kaynak aşağıda verilmiştir:</p>
 <table>
 <thead>
 <tr>
@@ -7937,30 +7937,30 @@ a.anchor-link {
 <td>295</td>
 <td>9–19</td>
 <td>Var</td>
-<td>Zenodo setinin aynısı, ayrı veri değil</td>
+<td>Zenodo setiyle aynı veri</td>
 </tr>
 <tr>
 <td>Kaggle OPG Across Ages</td>
 <td>24</td>
 <td>3–64</td>
 <td>Var</td>
-<td>Açık, ama yazarı "small sample" diyor</td>
+<td>Açık erişimli, örneklem çok küçük</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Sonuç:</strong></p>
 <ul>
-<li>Ölçüte göre doğru veri seti <strong>UFPE</strong>'dir, ancak talep edilip onay beklenmesi gerekiyor.</li>
-<li>Sıradaki büyük set Tufts, ancak kaynaklarında yaş etiketi bulunamadı; yaş etiketi olmadan bu çalışmada kullanılamaz.</li>
-<li>Bu not defteri o yüzden şu anda indirilebilen, yaş etiketli en büyük veri seti olan <strong>Zenodo 16745408</strong> üzerinde çalışır.</li>
-<li>Aşağıdaki kod veri setine bağlı değildir: UFPE gelince yalnızca veri yükleme hücresi değişir.</li>
+<li>En fazla görüntüye ve en geniş yaş aralığına sahip veri seti <strong>UFPE</strong>'dir; ancak bu veri setine erişim talep ve onay gerektirmektedir.</li>
+<li>Tufts veri setinin kaynaklarında yaş etiketi bulunamadığından bu çalışmada kullanılamamıştır.</li>
+<li>Bu nedenle çalışma, şu an erişilebilen ve yaş etiketi bulunan en büyük veri seti olan <strong>Zenodo 16745408</strong> üzerinde yürütülmüştür.</li>
+<li>Kod veri setine bağlı değildir; UFPE verisine erişildiğinde yalnızca veri yükleme hücresinin değiştirilmesi yeterlidir.</li>
 <li>Yaş aralığı dar olduğu için buradaki hatalar, geniş yaş aralıklı çalışmalarla doğrudan karşılaştırılamaz.</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fbda6355">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c8487b0d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7971,7 +7971,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=13791d19">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b9d9003d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8029,18 +8029,18 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ac2a8f27">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a08bcefa">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="3.-Veriyi-tan%C4%B1ma">3. Veriyi tanıma<a class="anchor-link" href="#3.-Veriyi-tan%C4%B1ma">¶</a></h2><p>Yaş bilgisi dosya adının başındaki sayıdır: <code>14 25.jpg</code> → 14 yaş.</p>
-<p>Dört şeye bakıyoruz: kaç görüntü var, yaşlar nasıl dağılmış, boyutlar nasıl, görüntüler nasıl görünüyor.</p>
+<p>Bu bölümde görüntü sayısı, yaş dağılımı, görüntü boyutları ve örnek görüntüler incelenmektedir.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=55a1fb14">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ce7cc4b9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8091,7 +8091,7 @@ Düşük çözünürlüklü (genişlik 400 px): 287 | yüksek çözünürlüklü
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4a40c99f">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8dd33a1b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8122,7 +8122,7 @@ Düşük çözünürlüklü (genişlik 400 px): 287 | yüksek çözünürlüklü
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0fd47808">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=59e7fd5b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8130,31 +8130,31 @@ Düşük çözünürlüklü (genişlik 400 px): 287 | yüksek çözünürlüklü
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Gözlemler:</strong></p>
 <ul>
-<li>Küçük yaşlarda süt dişi ve gelişmekte olan kökler, büyük yaşlarda ise tamamlanmış kökler ve yirmi yaş dişleri görülüyor.</li>
-<li>Görüntülerin büyük kısmı yalnızca yaklaşık <strong>400×187 piksel</strong>. Bu, kök ucu gibi ince ayrıntıları kaybettirebilir.</li>
+<li>Küçük yaşlarda süt dişleri ve gelişmekte olan kökler, büyük yaşlarda ise tamamlanmış kökler ve yirmi yaş dişleri görülmektedir.</li>
+<li>Görüntülerin büyük kısmı yaklaşık <strong>400×187 piksel</strong> boyutundadır. Bu çözünürlükte kök ucu gibi ince ayrıntılar kaybolabilir.</li>
 <li>9-11 yaş grubunda toplam <strong>26</strong> görüntü var; bu yaşlardaki sonuçlar daha az güvenilirdir.</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=11498832">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=10e76e8a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4.-Veri-temizli%C4%9Fi:-tekrar-eden-g%C3%B6r%C3%BCnt%C3%BCler">4. Veri temizliği: tekrar eden görüntüler<a class="anchor-link" href="#4.-Veri-temizli%C4%9Fi:-tekrar-eden-g%C3%B6r%C3%BCnt%C3%BCler">¶</a></h2><p>Aynı görüntü hem eğitimde hem testte olursa model cevabı ezberlemiş olur ve başarı olduğundan yüksek görünür. Buna <strong>veri sızıntısı</strong> denir.</p>
-<p>İki kontrol yapılıyor:</p>
+<h2 id="4.-Veri-temizli%C4%9Fi:-tekrar-eden-g%C3%B6r%C3%BCnt%C3%BCler">4. Veri temizliği: tekrar eden görüntüler<a class="anchor-link" href="#4.-Veri-temizli%C4%9Fi:-tekrar-eden-g%C3%B6r%C3%BCnt%C3%BCler">¶</a></h2><p>Aynı görüntünün hem eğitim hem test kümesinde bulunması, başarının olduğundan yüksek ölçülmesine yol açar. Buna <strong>veri sızıntısı</strong> denir.</p>
+<p>İki kontrol uygulanmıştır:</p>
 <ol>
-<li><strong>Birebir kopyalar:</strong> Dosya içeriği aynı olanlardan biri silinir.</li>
+<li><strong>Birebir kopyalar:</strong> İçeriği aynı olan dosyalardan biri çıkarılır.</li>
 <li><strong>Çok benzeyen görüntüler:</strong> Küçültülmüş görüntüler arasındaki korelasyon 0,90'ın üzerindeyse, aynı kişi olabilecekleri için aynı <strong>gruba</strong> konur. Aynı gruptaki görüntüler hiçbir zaman eğitim ve teste ayrı düşmez.</li>
 </ol>
-<p><strong>Sınır:</strong> Veri setinde hasta numarası yok. Aynı kişinin farklı yıllarda çekilmiş röntgenleri varsa bunları kesin olarak ayıklayamayız.</p>
+<p><strong>Sınır:</strong> Veri setinde hasta numarası yok. Aynı kişinin farklı yıllarda çekilmiş röntgenleri varsa bunlar kesin olarak ayıklanamamaktadır.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=17d25cf3">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=381b26b0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8205,7 +8205,7 @@ Tipik çift korelasyonu (ortanca): 0.695
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b3a583cf">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=939d5571">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8279,7 +8279,7 @@ Literatürdeki gibi 45 görüntülük bir test kümesi kullanılsaydı, sonuç h
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a7672918">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ed9e4715">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8334,25 +8334,25 @@ Gruplar ayrılmadı: eğitim ve test kesişimi boş.
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e8d3fd31">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4e4a66f3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="6.-Taban-%C3%A7izgisi:-%22hi%C3%A7-bakmadan-tahmin%22">6. Taban çizgisi: "hiç bakmadan tahmin"<a class="anchor-link" href="#6.-Taban-%C3%A7izgisi:-%22hi%C3%A7-bakmadan-tahmin%22">¶</a></h2><p>Bir modelin işe yarayıp yaramadığını anlamak için önce en basit tahminciye bakıyoruz: <strong>görüntüye hiç bakmadan herkese eğitim verisinin ortanca yaşını söylemek.</strong> Modeller bunu belirgin şekilde geçmek zorunda.</p>
+<h2 id="6.-Taban-%C3%A7izgisi">6. Taban çizgisi<a class="anchor-link" href="#6.-Taban-%C3%A7izgisi">¶</a></h2><p>Modellerin başarısını değerlendirmek için en basit tahminci referans alınmıştır: <strong>görüntü kullanılmadan tüm örnekler için eğitim verisinin ortanca yaşının tahmin edilmesi.</strong> Modellerin bu değerden belirgin biçimde daha iyi sonuç vermesi beklenir.</p>
 <p><strong>Kullanılan ölçütler:</strong></p>
 <ul>
-<li><strong>MAE:</strong> Ortalama mutlak hata, yıl cinsinden. Temel ölçüt, küçük olması iyidir.</li>
+<li><strong>MAE:</strong> Ortalama mutlak hata, yıl cinsinden. Temel ölçüttür; küçük olması daha iyidir.</li>
 <li><strong>RMSE:</strong> Büyük hataları daha çok cezalandırır.</li>
 <li><strong>R²:</strong> Yaş farklılıklarının ne kadarının açıklandığı. 1 mükemmel, 0 ortalama tahmin kadar.</li>
 <li><strong>±1 / ±2 yıl:</strong> Hatası bu sınırın içinde kalan görüntü oranı.</li>
-<li><strong>Yanlılık:</strong> Ortalamada fazla mı (+), az mı (−) tahmin ediliyor.</li>
+<li><strong>Yanlılık:</strong> Ortalama fazla (+) veya az (−) tahmin eğilimi.</li>
 </ul>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d2cbc74d">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e94b6bbf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8388,7 +8388,7 @@ Gruplar ayrılmadı: eğitim ve test kesişimi boş.
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=05f8ae22">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e668c40a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8404,7 +8404,7 @@ Gruplar ayrılmadı: eğitim ve test kesişimi boş.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=8f0b7dca">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=2dcdd3d2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8503,7 +8503,7 @@ Gruplar ayrılmadı: eğitim ve test kesişimi boş.
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e4a93311">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1061ba93">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8514,7 +8514,7 @@ Gruplar ayrılmadı: eğitim ve test kesişimi boş.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8c4296b9">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=113468e9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8554,7 +8554,7 @@ ConvNeXt-Tiny: MAE 1.061 | RMSE 1.362 | R² 0.685 | ±1 yıl %58.2 | ±2 yıl %8
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=51fbee93">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=313d53fe">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8565,7 +8565,7 @@ ConvNeXt-Tiny: MAE 1.061 | RMSE 1.362 | R² 0.685 | ±1 yıl %58.2 | ±2 yıl %8
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f052f5d8">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c92d73a5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8605,7 +8605,7 @@ Xception: MAE 1.203 | RMSE 1.519 | R² 0.608 | ±1 yıl %51.7 | ±2 yıl %79.9 |
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7f163b13">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c2fe8b5d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8616,7 +8616,7 @@ Xception: MAE 1.203 | RMSE 1.519 | R² 0.608 | ±1 yıl %51.7 | ±2 yıl %79.9 |
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=690ea2dc">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=51436439">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8656,19 +8656,19 @@ DenseNet-121: MAE 1.204 | RMSE 1.483 | R² 0.626 | ±1 yıl %46.3 | ±2 yıl %83
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=01dd0a4c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3bb6a2db">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="11.-EfficientNet-B0">11. EfficientNet-B0<a class="anchor-link" href="#11.-EfficientNet-B0">¶</a></h2><p>Beşi arasında en hafifi. Derinlik, genişlik ve çözünürlüğü dengeli büyütme fikrine dayanır. Düşük hesap gücüyle yüksek başarıyı hedefler.</p>
-<p><strong>Düzeltilen hata:</strong> İlk eğitimde bu modelin hatası 6,04 yıl çıktı; bu, hiç bakmadan tahmin etmekten (2,04 yıl) bile kötüydü. Sebep modelin kendisi değil, kütüphanenin başlatma ayarıydı: timm, EfficientNet'in son katmanını çıktı sayısına göre başlatıyor ve tek çıktılı regresyonda ağırlıklar ±1 aralığına çıkıyor (diğer dört modelde standart sapma yaklaşık 0,01-0,02, burada 0,59). Bu yüzden yalnızca EfficientNet'in son katmanı, diğerleriyle aynı büyüklükte (standart sapma 0,01) başlatıldı ve yalnızca bu model yeniden eğitildi. Düzeltme test sonucuna bakılarak değil, başlangıç çıktılarının anormal büyük olması ölçülerek gerekçelendirildi. Hatalı ilk sonuçlar <code>results_effnet_bug/</code> klasöründe saklıdır.</p>
+<p><strong>Düzeltilen hata:</strong> İlk eğitimde bu modelin hatası 6,04 yıl çıktı; bu değer taban çizgisinden (2,04 yıl) daha kötüdür. Sebep modelin kendisi değil, kütüphanenin başlatma ayarıydı: timm, EfficientNet'in son katmanını çıktı sayısına göre başlatıyor ve tek çıktılı regresyonda ağırlıklar ±1 aralığına çıkıyor (diğer dört modelde standart sapma yaklaşık 0,01-0,02, burada 0,59). Bu yüzden yalnızca EfficientNet'in son katmanı, diğerleriyle aynı büyüklükte (standart sapma 0,01) başlatıldı ve yalnızca bu model yeniden eğitildi. Düzeltme test sonucuna bakılarak değil, başlangıç çıktılarının anormal büyük olması ölçülerek gerekçelendirildi. Hatalı ilk sonuçlar <code>results_effnet_bug/</code> klasöründe saklıdır.</p>
 <p>Aşağıda her katın test hatası, öğrenme eğrileri ve görülmemiş verideki tahminler yer alır.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=28594193">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3774e1b6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8708,7 +8708,7 @@ EfficientNet-B0: MAE 1.137 | RMSE 1.439 | R² 0.648 | ±1 yıl %52.4 | ±2 yıl 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6a732031">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4883d707">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8719,7 +8719,7 @@ EfficientNet-B0: MAE 1.137 | RMSE 1.439 | R² 0.648 | ±1 yıl %52.4 | ±2 yıl 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8d20c918">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=dec4b0e5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8759,18 +8759,18 @@ ResNet-50: MAE 1.109 | RMSE 1.394 | R² 0.670 | ±1 yıl %53.7 | ±2 yıl %85.4 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=51b04959">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=46410316">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="13.-Sonu%C3%A7lar%C4%B1n-kar%C5%9F%C4%B1la%C5%9Ft%C4%B1r%C4%B1lmas%C4%B1">13. Sonuçların karşılaştırılması<a class="anchor-link" href="#13.-Sonu%C3%A7lar%C4%B1n-kar%C5%9F%C4%B1la%C5%9Ft%C4%B1r%C4%B1lmas%C4%B1">¶</a></h2><p>Her model için tüm görüntülerin "görülmemiş veri" tahminlerinden ölçütler hesaplanır.</p>
-<p><strong>%95 güven aralığı</strong> bootstrap ile bulunur: görüntüler 5.000 kez rastgele yeniden seçilir ve MAE'nin ne kadar oynadığına bakılır. Aralık ne kadar darsa sonuç o kadar kesindir.</p>
+<p><strong>%95 güven aralığı</strong> bootstrap ile bulunur: görüntüler 5.000 kez rastgele yeniden seçilir ve MAE'nin ne kadar oynadığına bakılır. Aralığın dar olması, sonucun daha kesin olduğunu gösterir.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c2aada1a">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3579963a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8944,7 +8944,7 @@ ResNet-50: MAE 1.109 | RMSE 1.394 | R² 0.670 | ±1 yıl %53.7 | ±2 yıl %85.4 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d2e0faca">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4774b90d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8980,22 +8980,22 @@ ResNet-50: MAE 1.109 | RMSE 1.394 | R² 0.670 | ±1 yıl %53.7 | ±2 yıl %85.4 
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=041d0129">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=88fd2a4f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Farklar-ger%C3%A7ek-mi,-%C5%9Fans-m%C4%B1?">Farklar gerçek mi, şans mı?<a class="anchor-link" href="#Farklar-ger%C3%A7ek-mi,-%C5%9Fans-m%C4%B1?">¶</a></h3><p>Güven aralıklarının çakışması tek başına yeterli bir kanıt değildir. Modeller aynı görüntüleri tahmin ettiği için, <strong>görüntü görüntü eşleştirilmiş</strong> karşılaştırma yapılır:</p>
+<h3 id="Farklar%C4%B1n-istatistiksel-olarak-de%C4%9Ferlendirilmesi">Farkların istatistiksel olarak değerlendirilmesi<a class="anchor-link" href="#Farklar%C4%B1n-istatistiksel-olarak-de%C4%9Ferlendirilmesi">¶</a></h3><p>Güven aralıklarının çakışması tek başına yeterli bir kanıt değildir. Modeller aynı görüntüleri tahmin ettiği için, <strong>görüntü görüntü eşleştirilmiş</strong> karşılaştırma yapılır:</p>
 <ul>
 <li><strong>Friedman testi:</strong> Beş model arasında genel bir fark var mı?</li>
-<li><strong>En iyi modele karşı Wilcoxon testi</strong> (Holm düzeltmeli): Her model en iyiden gerçekten farklı mı?</li>
-<li><strong>Eşleştirilmiş bootstrap:</strong> MAE farkı ne kadar, güven aralığı 0'ı içeriyor mu?</li>
+<li><strong>En iyi modele karşı Wilcoxon testi</strong> (Holm düzeltmeli): Her model en iyi modelden farklı mı?</li>
+<li><strong>Eşleştirilmiş bootstrap:</strong> MAE farkının büyüklüğü ve güven aralığının 0'ı içerip içermediği.</li>
 </ul>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8cc1369e">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3b4e3865">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9112,17 +9112,17 @@ En iyi model: ConvNeXt-Tiny. fark = bu modelin MAE'si eksi en iyinin MAE'si
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8ea21ef8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=17d0425b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="14.-Hata-hangi-ya%C5%9Flarda-b%C3%BCy%C3%BCyor?">14. Hata hangi yaşlarda büyüyor?<a class="anchor-link" href="#14.-Hata-hangi-ya%C5%9Flarda-b%C3%BCy%C3%BCyor?">¶</a></h2><p>Tek bir ortalama, zayıf kaldığı yaşları gizleyebilir. Hatalar yaş bandına göre ayrılır. Ayrıca her modelin <strong>ortalamaya çekme</strong> eğilimi ölçülür: küçükleri büyük, büyükleri küçük tahmin etme.</p>
+<h2 id="14.-Hata-hangi-ya%C5%9Flarda-b%C3%BCy%C3%BCyor?">14. Hata hangi yaşlarda büyüyor?<a class="anchor-link" href="#14.-Hata-hangi-ya%C5%9Flarda-b%C3%BCy%C3%BCyor?">¶</a></h2><p>Tek bir ortalama, zayıf kaldığı yaşları gizleyebilir. Hatalar yaş bandına göre ayrılır. Ayrıca her modelin <strong>ortalamaya çekme</strong> eğilimi ölçülür: küçük yaşların olduğundan büyük, büyük yaşların olduğundan küçük tahmin edilmesi.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e72ef315">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9636a207">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9310,7 +9310,7 @@ En iyi model: ConvNeXt-Tiny. fark = bu modelin MAE'si eksi en iyinin MAE'si
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=984e4722">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bdff4935">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9451,7 +9451,7 @@ En iyi model: ConvNeXt-Tiny. fark = bu modelin MAE'si eksi en iyinin MAE'si
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0bf96009">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=35ec069e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9505,28 +9505,28 @@ En iyi model: ConvNeXt-Tiny. fark = bu modelin MAE'si eksi en iyinin MAE'si
 </tr>
 </tbody>
 </table>
-<p><strong>Nasıl okunmalı:</strong></p>
+<p><strong>Değerlendirme:</strong></p>
 <ul>
-<li>Aynı verideki çalışmaların hataları bizimkine yakın. Farklar, 45 görüntülük testlerin belirsizliği ve farklı bölme yöntemleri düşünüldüğünde tek başına üstünlük göstermez.</li>
-<li>UFPE'nin 3,1 yıllık hatası bizimkiyle doğrudan karşılaştırılamaz: yaş aralığı çok daha geniştir ve yetişkinlerde diş gelişimi tamamlandığı için yaş tahmini zorlaşır.</li>
+<li>Aynı veri setindeki çalışmaların hataları bu çalışmanın sonuçlarına yakındır. Farklar, 45 görüntülük testlerin belirsizliği ve farklı bölme yöntemleri düşünüldüğünde tek başına üstünlük göstermez.</li>
+<li>UFPE çalışmasındaki 3,1 yıllık hata bu çalışmayla doğrudan karşılaştırılamaz: yaş aralığı çok daha geniştir ve yetişkinlerde diş gelişimi tamamlandığı için yaş tahmini zorlaşır.</li>
 <li><strong>Dikkat:</strong> Frontiers çalışması RMSE = 1,20 ile R² = 0,95 bildiriyor. Bu veride yaş varyansı yaklaşık 5,9 olduğundan, standart R² tanımıyla RMSE = 1,20 yaklaşık R² = 0,75'e karşılık gelir. Bildirilen R² muhtemelen farklı bir tanım veya hesapla elde edilmiştir; doğrudan kıyaslarken dikkatli olunmalıdır.</li>
 </ul>
 <h2 id="16.-Sonu%C3%A7-ve-s%C4%B1n%C4%B1rl%C4%B1l%C4%B1klar">16. Sonuç ve sınırlılıklar<a class="anchor-link" href="#16.-Sonu%C3%A7-ve-s%C4%B1n%C4%B1rl%C4%B1l%C4%B1klar">¶</a></h2><p><strong>Bulgular</strong></p>
 <ol>
-<li><strong>Modeller öğreniyor:</strong> Beş modelin MAE değeri 1,06–1,20 yıl; taban çizgisi 2,04 yıl.</li>
+<li><strong>Taban çizgisine göre iyileşme:</strong> Beş modelin MAE değeri 1,06–1,20 yıl, taban çizgisinin MAE değeri 2,04 yıldır.</li>
 <li><strong>Sıralama kesin değil:</strong> ConvNeXt-Tiny ilk sırada. ResNet-50 ve EfficientNet-B0 ile farkı istatistiksel olarak ayırt edilemiyor. DenseNet-121 ve Xception ile eşleştirilmiş testlerde fark anlamlı çıkıyor (Holm düzeltmeli p = 0,002 ve 0,006), ancak genel Friedman testi anlamlı olmadığı ve karşılaştırma en iyi model seçildikten sonra yapıldığı için bu bulgu <strong>keşifsel</strong> kabul edilmelidir.</li>
 <li><strong>Öneri:</strong> Sonraki adımlar için ana model ConvNeXt-Tiny, literatür kıyası için ResNet-50. EfficientNet-B0, yaklaşık 7 kat daha az parametreyle yakın sonuç veriyor; hafif model gerekirse iyi bir aday.</li>
-<li><strong>En zor yaşlar 18-19:</strong> Tüm modellerde en büyük hata bu banttadır (1,50–1,79 yıl). Olası bir sebep, diş gelişiminin bu yaşlarda tamamlanmaya yaklaşması ve görüntüdeki yaş işaretlerinin azalmasıdır; bu mevcut deneyle kanıtlanmış değildir.</li>
-<li><strong>Ortalamaya çekme var:</strong> Eğim 0,60–0,71 arasında; modeller küçükleri büyük, büyükleri küçük tahmin etme eğiliminde. Bu sistematik hata, projede ölçülmek istenen hata kaynaklarından biridir.</li>
+<li><strong>En yüksek hata 18-19 yaş bandındadır:</strong> Tüm modellerde en büyük hata bu banttadır (1,50–1,79 yıl). Olası bir sebep, diş gelişiminin bu yaşlarda tamamlanmaya yaklaşması ve görüntüdeki yaş işaretlerinin azalmasıdır; bu mevcut deneyle kanıtlanmış değildir.</li>
+<li><strong>Ortalamaya çekme:</strong> Eğim 0,60–0,71 arasındadır; modeller küçük yaşları olduğundan büyük, büyük yaşları olduğundan küçük tahmin etme eğilimindedir. Bu sistematik hata, projede ölçülmek istenen hata kaynaklarından biridir.</li>
 </ol>
 <p><strong>Sınırlılıklar</strong></p>
 <ul>
-<li><strong>Veri seti:</strong> Ölçüte uyan UFPE değil; az örnekli (9-11 yaş bandında 25 görüntü) ve dar yaş aralıklı.</li>
+<li><strong>Veri seti:</strong> Örneklem küçük (9-11 yaş bandında 25 görüntü) ve yaş aralığı dardır.</li>
 <li><strong>Düşük çözünürlük:</strong> Görüntülerin büyük kısmı yaklaşık 400×187 piksel; ince yapılar kaybolmuş olabilir.</li>
-<li><strong>Hasta numarası yok:</strong> Aynı kişinin farklı görüntüleri ayıklanamadığından sonuçlar olduğundan iyi görünüyor olabilir.</li>
+<li><strong>Hasta numarası yok:</strong> Aynı kişiye ait farklı görüntüler ayıklanamadığından sonuçlar olduğundan iyi görünebilir.</li>
 <li><strong>Tam sayı yaş etiketi:</strong> Yaşlar tam yıl olduğundan, modeller kusursuz olsa bile yaklaşık 0,25 yıllık bir hata kalır (yıl içinde eşit dağılım varsayımıyla).</li>
 <li><strong>Sınırlı ayar:</strong> Tüm modeller tek bir ayarla ve tek rastgele başlangıçla eğitildi. Her model için ayrı ayar yapılsa sıralama değişebilir.</li>
-<li><strong>Süreler kesin değil:</strong> Eğitim ve tahmin süreleri, çalışma kesintiye uğradığı ve aynı Mac başka işler de yaptığı için yalnızca kaba göstergedir (örneğin Xception 1. kat 10,4 dk).</li>
+<li><strong>Süreler kesin değil:</strong> Eğitim ve tahmin süreleri, çalışma kesintiye uğradığı ve bilgisayarda başka işlemler de yürütüldüğü için yalnızca yaklaşık değerlerdir (örneğin Xception 1. kat 10,4 dk).</li>
 <li><strong>Dış doğrulama yok:</strong> Sonuçlar başka bir popülasyonda ya da cihazda sınanmadı. Bu sonuçlar adli kullanım için yeterli değildir.</li>
 </ul>
 <p><strong>Sonraki adımlar</strong></p>
