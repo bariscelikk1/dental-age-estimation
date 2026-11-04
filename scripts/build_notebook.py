@@ -7,42 +7,56 @@ def code(s): cells.append(nbf.v4.new_code_cell(s.strip()))
 md("""
 # Panoramik Röntgenden Dental Yaş Tahmini: Beş CNN Modelinin Karşılaştırılması
 
-TÜBİTAK 2209-A ön çalışması, 1. kısım · Nurullah Barış Çelik · Danışman: Prof. Dr. Selami Beyhan
+**TÜBİTAK 2209-A ön çalışması, 1. kısım** · Hazırlayan: Nurullah Barış Çelik · Danışman: Prof. Dr. Selami Beyhan
+
+**Amaç:** Panoramik diş röntgeninden kişinin yaşını tahmin etmek ve ConvNeXt-Tiny, Xception, DenseNet-121, EfficientNet-B0 ile ResNet-50 modellerini aynı koşullarda karşılaştırmak.
 """)
 
 md("""
-## Sonuçlar
+## Sonuçların özeti
 
-Zenodo 16745408, temizlik sonrası 294 görüntü, 9-19 yaş, 5 katlı çapraz doğrulama.
-
-| Sıra | Model | MAE (yıl) | %95 GA | R² | ±2 yıl | Parametre |
+| Sıra | Model | MAE (yıl) | %95 güven aralığı | R² | ±2 yıl içinde | Parametre |
 |---|---|---|---|---|---|---|
-| 1 | ConvNeXt-Tiny | 1,06 | 0,96–1,16 | 0,68 | %85,0 | 27,8 M |
+| 1 | **ConvNeXt-Tiny** | **1,06** | 0,96–1,16 | 0,68 | %85,0 | 27,8 M |
 | 2 | ResNet-50 | 1,11 | 1,01–1,21 | 0,67 | %85,4 | 23,5 M |
 | 3 | EfficientNet-B0 | 1,14 | 1,04–1,24 | 0,65 | %84,7 | 4,0 M |
 | 4 | Xception | 1,20 | 1,10–1,32 | 0,61 | %79,9 | 20,8 M |
 | 5 | DenseNet-121 | 1,20 | 1,11–1,30 | 0,63 | %83,7 | 7,0 M |
-| – | Taban çizgisi (ortanca yaş) | 2,04 | | −0,15 | %69,7 | |
+| – | *Taban çizgisi (tüm görüntüler için ortanca yaş)* | *2,04* | | *−0,15* | *%69,7* | |
 
-Friedman: χ² = 8,23, p = 0,084. Beş model arasında anlamlı fark yok.
+- Beş modelin tamamı, taban çizgisinin hatasını yaklaşık yarıya indirmektedir.
+- En düşük hata ConvNeXt-Tiny ile elde edilmiştir; ancak beş modeli birlikte sınayan Friedman testi anlamlı bulunmamıştır (p = 0,084). Bu nedenle modeller arasında kesin bir sıralama yapılamamaktadır.
+- Sonuçlar, şu an erişilebilen açık erişimli Zenodo veri setinde (temizlik sonrası 294 görüntü, 9-19 yaş) elde edilmiştir ve ön sonuç niteliğindedir.
 """)
 
 md("""
-## 1. Veri seti
+## 1. Veri setinin seçimi
+
+Veri seti seçiminde görüntü sayısı, yaş aralığı, yaş etiketi ve erişim durumu dikkate alınmıştır. İncelenen beş kaynak aşağıda verilmiştir:
 
 | Veri seti | Görüntü | Yaş aralığı | Yaş etiketi | Erişim |
 |---|---|---|---|---|
-| UFPE Brezilya (Sci. Reports 2024) | 12.827 (10.036 hasta) | 2,25–96,5 | Var | E-posta ile talep |
-| Tufts Dental Database | 1.000 | Belirtilmemiş | Bulunamadı | İndirme bilgisi bulunamadı |
-| Zenodo 16745408 | 296 | 9–19 | Var (tam yıl) | Açık (CC BY 4.0) |
+| **UFPE Brezilya** (Sci. Reports 2024) | **12.827** (10.036 hasta) | **2,25–96,5** | Var | **E-posta ile talep**: kurumsal adresten, koşullar kabul edilerek |
+| Tufts Dental Database | 1.000 | Belirtilmemiş | Kaynaklarda bulunamadı (indirme dosyaları incelenemedi) | Sitede indirme bilgisi bulunamadı |
+| **Zenodo 16745408** | **296** | 9–19 | Var (tam sayı yaş, dosya adında) | **Açık (CC BY 4.0)** |
 | Dental_011 | 295 | 9–19 | Var | Zenodo setiyle aynı veri |
-| Kaggle OPG Across Ages | 24 | 3–64 | Var | Açık |
+| Kaggle OPG Across Ages | 24 | 3–64 | Var | Açık erişimli, örneklem çok küçük |
 
-Kullanılan: Zenodo 16745408.
+**Sonuç:**
+
+- En fazla görüntüye ve en geniş yaş aralığına sahip veri seti **UFPE**'dir; ancak bu veri setine erişim talep ve onay gerektirmektedir.
+- Tufts veri setinin kaynaklarında yaş etiketi bulunamadığından bu çalışmada kullanılamamıştır.
+- Bu nedenle çalışma, şu an erişilebilen ve yaş etiketi bulunan en büyük veri seti olan **Zenodo 16745408** üzerinde yürütülmüştür.
+- Kod veri setine bağlı değildir; UFPE verisine erişildiğinde yalnızca veri yükleme hücresinin değiştirilmesi yeterlidir.
+- Yaş aralığı dar olduğu için buradaki hatalar, geniş yaş aralıklı çalışmalarla doğrudan karşılaştırılamaz.
 """)
 
 md("""
 ## 2. Kurulum
+
+Kullanılan kütüphaneler: **PyTorch** (model eğitimi), **timm** (hazır modeller), **scikit-learn** (veri bölme ve ölçütler).
+
+Rastgelelik sabitlenir (`SEED = 42`), böylece her model aynı veri bölünmelerini görür. Apple GPU (MPS) tamamen deterministik olmadığı için tekrar çalıştırmada sonuçlar küçük farklar gösterebilir.
 """)
 code("""
 import os, re, json, time, hashlib, gc, warnings
@@ -79,7 +93,11 @@ print('Cihaz:', DEVICE, '| torch', torch.__version__, '| timm', timm.__version__
 """)
 
 md("""
-## 3. Veri
+## 3. Veriyi tanıma
+
+Yaş bilgisi dosya adının başındaki sayıdır: `14 25.jpg` → 14 yaş.
+
+Bu bölümde görüntü sayısı, yaş dağılımı, görüntü boyutları ve örnek görüntüler incelenmektedir.
 """)
 code("""
 rows = []
@@ -108,13 +126,24 @@ for ax, a in zip(axes.ravel(), [9, 11, 13, 15, 17, 19]):
 plt.tight_layout(); plt.show()
 """)
 md("""
-9-11 yaş: 26 görüntü (temizlik sonrası 25). Görüntülerin çoğu yaklaşık 400×187 piksel.
+**Gözlemler:**
+
+- Küçük yaşlarda süt dişleri ve gelişmekte olan kökler, büyük yaşlarda ise tamamlanmış kökler ve yirmi yaş dişleri görülmektedir.
+- Görüntülerin büyük kısmı yaklaşık **400×187 piksel** boyutundadır. Bu çözünürlükte kök ucu gibi ince ayrıntılar kaybolabilir.
+- 9-11 yaş grubunda toplam **26** görüntü var; bu yaşlardaki sonuçlar daha az güvenilirdir.
 """)
 
 md("""
-## 4. Tekrar eden görüntüler
+## 4. Veri temizliği: tekrar eden görüntüler
 
-Birebir kopyalar çıkarıldı. Korelasyonu 0,90'ın üzerinde olan görüntüler aynı gruba kondu; bir grup eğitim ve teste bölünmedi. Hasta numarası yok.
+Aynı görüntünün hem eğitim hem test kümesinde bulunmaması için tekrar eden görüntüler kontrol edilmiştir.
+
+İki kontrol uygulanmıştır:
+
+1. **Birebir kopyalar:** İçeriği aynı olan dosyalardan biri çıkarılır.
+2. **Çok benzeyen görüntüler:** Küçültülmüş görüntüler arasındaki korelasyon 0,90'ın üzerindeyse, aynı kişi olabilecekleri için aynı **gruba** konur. Aynı gruptaki görüntüler hiçbir zaman eğitim ve teste ayrı düşmez.
+
+Veri setinde hasta numarası bulunmamaktadır. Aynı kişinin farklı yıllarda çekilmiş röntgenleri varsa bunlar kesin olarak ayıklanamamaktadır.
 """)
 code("""
 dups = df_all[df_all.duplicated('md5', keep=False)].groupby('md5').name.apply(list).tolist()
@@ -135,19 +164,26 @@ print('Tipik çift korelasyonu (ortanca):', round(float(np.median(C[np.triu_indi
 """)
 
 md("""
-## 5. Deney ayarları
+## 5. Ortak deney protokolü
 
-| Ayar | Değer |
-|---|---|
-| Bölme | 5 kat, yaş bandına göre dengeli, gruplar ayrılmadan |
-| Doğrulama | Eğitim kısmının yaklaşık %14'ü |
-| Girdi | 224×224, gri tonlama 3 kanala kopyalı |
-| Başlangıç ağırlıkları | ImageNet |
-| Kayıp | L1 |
-| Optimizasyon | AdamW, öğrenme hızı 1e-4, kosinüs azaltma |
-| Eğitim | En fazla 40 tur, sabır 8 tur |
-| Veri çoğaltma | ±5° döndürme, %3 kaydırma, ±%5 ölçek, ±%15 parlaklık/kontrast |
-| Yatay çevirme | Yok |
+Beş modelde de aynı deney ayarları kullanılmıştır.
+
+45 görüntülük tek bir test kümesinde sonuç, seçilen görüntülere çok bağlı olacağından 5 katlı çapraz doğrulama kullanılmıştır. Her görüntü, eğitimde görmemiş bir model tarafından tahmin edilmiştir.
+
+| Ayar | Değer | Neden |
+|---|---|---|
+| Bölme | 5 kat, yaş bandına göre dengeli, gruplar ayrılmadan | Her katta benzer yaş dağılımı, sızıntı yok |
+| Doğrulama | Eğitim kısmının yaklaşık %14'ü | Erken durdurma test verisine bakmadan yapılır |
+| Girdi | 224×224, gri tonlama 3 kanala kopyalı | Tüm modellerde aynı boyut |
+| Başlangıç ağırlıkları | ImageNet | Az veride sıfırdan eğitmekten daha iyi başlangıç |
+| Çıktı | Tek sayı (yaş) | Bu bir regresyon problemi |
+| Kayıp | L1 (ortalama mutlak hata) | Rapor edilen ölçütle aynı |
+| Optimizasyon | AdamW, öğrenme hızı 1e-4, kosinüs azaltma | Her model için aynı |
+| Eğitim | En fazla 40 tur, 8 tur iyileşme yoksa dur | Ezberlemeyi sınırlar |
+| Veri çoğaltma | ±5° döndürme, %3 kaydırma, ±%5 ölçek, ±%15 parlaklık/kontrast | Çekim farklarını taklit eder |
+| Yatay çevirme | Yok | Sol-sağ simetri 2. aşamanın konusu |
+
+Xception normalde 299×299 ile kullanılır. Ortak protokol gereği burada 224×224 kullanıldı; giriş çözünürlüğünün etkisi projenin sonraki aşamasında ölçülecek.
 """)
 code("""
 bands = pd.cut(df.age, [8,11,13,15,16,17,19], labels=['9-11','12-13','14-15','16','17','18-19'])
@@ -171,7 +207,15 @@ print('Bellekteki görüntüler:', tuple(IMAGES.shape))
 md("""
 ## 6. Taban çizgisi
 
-Tüm görüntüler için eğitim verisinin ortanca yaşı.
+Modellerin başarısını değerlendirmek için en basit tahminci referans alınmıştır: **görüntü kullanılmadan tüm örnekler için eğitim verisinin ortanca yaşının tahmin edilmesi.** Modellerin bu değerden belirgin biçimde daha iyi sonuç vermesi beklenir.
+
+**Kullanılan ölçütler:**
+
+- **MAE:** Ortalama mutlak hata, yıl cinsinden. Temel ölçüttür; küçük olması daha iyidir.
+- **RMSE:** Büyük hataları daha çok cezalandırır.
+- **R²:** Yaş farklılıklarının ne kadarının açıklandığı. 1 mükemmel, 0 ortalama tahmin kadar.
+- **±1 / ±2 yıl:** Hatası bu sınırın içinde kalan görüntü oranı.
+- **Yanlılık:** Ortalama fazla (+) veya az (−) tahmin eğilimi.
 """)
 code("""
 def metrics(y, p):
@@ -186,7 +230,15 @@ print('Taban çizgisi (ortanca tahmini):', {k: round(float(v),3) for k,v in base
 """)
 
 md("""
-## 7. Eğitim kodu
+## 7. Ortak eğitim kodu
+
+Tek bir fonksiyon, beş modelin hepsini aynı şekilde eğitir:
+
+1. Hazır modeli yükler, sınıflandırma katmanını tek sayı üreten bir katmanla değiştirir.
+2. Her katta eğitir; doğrulama hatası en düşük turun ağırlıklarını saklar.
+3. Test parçasını yalnızca en sonda bir kez tahmin eder.
+
+Yaş, eğitim ortalaması ve standart sapmasıyla ölçeklenir; bilgi test verisinden alınmaz. Her katın sonucu `results/` klasörüne yazılır, böylece çalışma yarıda kesilirse baştan başlamak gerekmez.
 """)
 code("""
 class XrayDS(Dataset):
@@ -277,22 +329,29 @@ def run_model(label, timm_name):
 """)
 
 sections = [
- ('8','ConvNeXt-Tiny','convnext_tiny.fb_in1k'),
- ('9','Xception','legacy_xception.tf_in1k'),
- ('10','DenseNet-121','densenet121.tv_in1k'),
- ('11','EfficientNet-B0','efficientnet_b0.ra_in1k'),
- ('12','ResNet-50','resnet50.tv_in1k'),
+ ('8','ConvNeXt-Tiny','convnext_tiny.fb_in1k',"2022 tarihli bu model, klasik CNN yapısını Transformer modellerinden alınan fikirlerle (7×7 filtreler, farklı normalizasyon) günceller."),
+ ('9','Xception','legacy_xception.tf_in1k',"Derinlemesine ayrılabilir evrişim kullanır: önce her kanal ayrı işlenir, sonra kanallar birleştirilir."),
+ ('10','DenseNet-121','densenet121.tv_in1k',"Her katman, önceki tüm katmanların çıktısını girdi olarak alır. Bu yapı parametre sayısını düşürür."),
+ ('11','EfficientNet-B0','efficientnet_b0.ra_in1k',"Beş model arasında parametre sayısı en düşük olan modeldir. Derinlik, genişlik ve çözünürlüğü birlikte ölçekler."),
+ ('12','ResNet-50','resnet50.tv_in1k',"Tıbbi görüntülemede sık kullanılan bir referans modeldir. Atlamalı bağlantılar derin ağların eğitimini kolaylaştırır."),
 ]
-for n,label,name in sections:
+for n,label,name,txt in sections:
     note = ""
     if label == 'EfficientNet-B0':
-        note = ("\n\nİlk eğitimde MAE 6,04 yıl çıktı. Neden: timm tek çıktılı son katmanı standart sapma 0,59 ile başlatıyor (diğer modellerde 0,01-0,02). "
-                "Son katman standart sapma 0,01 ile başlatılıp yalnızca bu model yeniden eğitildi. Hatalı sonuçlar: `results_effnet_bug/`.")
-    md(f"## {n}. {label}{note}")
+        note = ("\n\nİlk eğitimde bu modelin hatası 6,04 yıl çıktı; bu değer taban çizgisinden (2,04 yıl) daha kötüdür. "
+                "Bunun sebebi kütüphanenin başlatma ayarıdır: timm, EfficientNet'in son katmanını çıktı sayısına göre başlatıyor ve tek çıktılı regresyonda "
+                "ağırlıklar ±1 aralığına çıkıyor (diğer dört modelde standart sapma yaklaşık 0,01-0,02, burada 0,59). "
+                "Bu yüzden yalnızca EfficientNet'in son katmanı, diğerleriyle aynı büyüklükte (standart sapma 0,01) başlatıldı ve yalnızca bu model yeniden eğitildi. "
+                "Düzeltme test sonucuna bakılarak değil, başlangıç çıktılarının anormal büyük olması ölçülerek gerekçelendirildi. Hatalı ilk sonuçlar `results_effnet_bug/` klasöründe saklıdır.")
+    md(f"## {n}. {label}\n\n{txt}{note}\n\n")
     code(f"run_model({label!r}, {name!r})")
 
 md("""
-## 13. Karşılaştırma
+## 13. Sonuçların karşılaştırılması
+
+Her model için tüm görüntülerin "görülmemiş veri" tahminlerinden ölçütler hesaplanır.
+
+**%95 güven aralığı** bootstrap ile bulunur: görüntüler 5.000 kez rastgele yeniden seçilir ve MAE'nin ne kadar oynadığına bakılır. 
 """)
 code("""
 def boot_ci(a, n=5000, seed=SEED):
@@ -323,9 +382,13 @@ ax.set(xlabel='MAE (yıl, küçük daha iyi). Çizgiler: %95 güven aralığı',
 plt.tight_layout(); plt.show()
 """)
 md("""
-### İstatistiksel testler
+### Farkların istatistiksel olarak değerlendirilmesi
 
-Friedman, en iyi modele karşı Wilcoxon (Holm düzeltmeli), eşleştirilmiş bootstrap.
+Güven aralıklarının çakışması tek başına yeterli bir kanıt değildir. Modeller aynı görüntüleri tahmin ettiği için, **görüntü görüntü eşleştirilmiş** karşılaştırma yapılır:
+
+- **Friedman testi:** Beş model arasında genel bir fark var mı?
+- **En iyi modele karşı Wilcoxon testi** (Holm düzeltmeli): Her model en iyi modelden farklı mı?
+- **Eşleştirilmiş bootstrap:** MAE farkının büyüklüğü ve güven aralığının 0'ı içerip içermediği.
 """)
 code("""
 AE = pd.DataFrame({k: np.abs(v['oof']-y) for k,v in ALL.items()}).dropna()
@@ -344,6 +407,8 @@ cmp.round(3)
 """)
 md("""
 ## 14. Yaş bandına göre hata
+
+Hatalar yaş bandına göre ayrılmıştır. Ayrıca her model için küçük yaşları olduğundan büyük, büyük yaşları olduğundan küçük tahmin etme eğilimi (ortalamaya çekme) ölçülmüştür.
 """)
 code("""
 order = ['9-11','12-13','14-15','16','17','18-19']
@@ -365,33 +430,45 @@ print(f'{b}: en büyük 10 hata'); display(e.sort_values('abs',ascending=False).
 print('Hata > 2 yıl olan görüntü sayısı:', (e['abs']>2).sum(), '/', len(e))
 """)
 md("""
-## 15. Literatür
+## 15. Literatürle karşılaştırma
 
 | Çalışma | Veri | Model | Değerlendirme | MAE (yıl) |
 |---|---|---|---|---|
-| Bu çalışma | Zenodo, 294 görüntü, 9-19 yaş | ConvNeXt-Tiny | 5 katlı, tüm görüntüler | 1,06 |
-| Bu çalışma | Aynı | ResNet-50 | 5 katlı, tüm görüntüler | 1,11 |
+| **Bu çalışma** | Zenodo, 294 görüntü, 9-19 yaş | ConvNeXt-Tiny | 5 katlı, tüm görüntüler | **1,06** |
+| **Bu çalışma** | Aynı | ResNet-50 | 5 katlı, tüm görüntüler | **1,11** |
 | Frontiers in Radiology 2026 | Zenodo, 296 görüntü | ResNet-50 | Tek test kümesi, 45 görüntü | 0,98 |
 | Dental_011 | Zenodo, 295 görüntü | ResNet-18 | Tek test kümesi, 45 görüntü | 0,78 (%95 GA 0,58–1,01) |
 | UFPE, Sci. Reports 2024 | 12.827 görüntü, 2,25-96,5 yaş | InceptionV4 | Tek test kümesi | 3,1 |
 
-Frontiers çalışmasının bildirdiği RMSE = 1,20 ve R² = 0,95 bu veride birbiriyle uyuşmuyor: yaş varyansı yaklaşık 5,9 olduğundan RMSE = 1,20, standart tanımla yaklaşık R² = 0,75 eder.
+- Aynı veri setindeki çalışmaların hataları bu çalışmanın sonuçlarına yakındır. Farklar, 45 görüntülük testlerin belirsizliği ve farklı bölme yöntemleri düşünüldüğünde tek başına üstünlük göstermez.
+- UFPE çalışmasındaki 3,1 yıllık hata bu çalışmayla doğrudan karşılaştırılamaz: yaş aralığı çok daha geniştir ve yetişkinlerde diş gelişimi tamamlandığı için yaş tahmini zorlaşır.
+- Frontiers çalışması RMSE = 1,20 ile R² = 0,95 bildiriyor. Bu veride yaş varyansı yaklaşık 5,9 olduğundan, standart R² tanımıyla RMSE = 1,20 yaklaşık R² = 0,75'e karşılık gelir. Bildirilen R² muhtemelen farklı bir tanım veya hesapla elde edilmiştir; doğrudan kıyaslarken dikkatli olunmalıdır.
 
-## 16. Sonuç
+## 16. Sonuç ve sınırlılıklar
 
-- MAE: modeller 1,06–1,20 yıl, taban çizgisi 2,04 yıl.
-- ConvNeXt-Tiny'a karşı Holm düzeltmeli p: DenseNet-121 0,002, Xception 0,006, EfficientNet-B0 0,188, ResNet-50 0,271. Friedman anlamlı olmadığı ve karşılaştırma en iyi model seçildikten sonra yapıldığı için bu değerler keşifseldir.
-- En büyük hata 18-19 yaş bandında: 1,50–1,79 yıl.
-- Tahmin-gerçek yaş eğimi 0,60–0,71: küçük yaşlar fazla, büyük yaşlar az tahmin ediliyor.
+### Bulgular
+
+1. Beş modelin MAE değeri 1,06–1,20 yıl, taban çizgisinin MAE değeri 2,04 yıldır.
+2. ConvNeXt-Tiny ilk sırada. ResNet-50 ve EfficientNet-B0 ile farkı istatistiksel olarak ayırt edilemiyor. DenseNet-121 ve Xception ile eşleştirilmiş testlerde fark anlamlı çıkıyor (Holm düzeltmeli p = 0,002 ve 0,006), ancak genel Friedman testi anlamlı olmadığı ve karşılaştırma en iyi model seçildikten sonra yapıldığı için bu bulgu **keşifsel** kabul edilmelidir.
+3. Sonraki adımlar için ana model ConvNeXt-Tiny, literatür kıyası için ResNet-50. EfficientNet-B0, yaklaşık 7 kat daha az parametreyle yakın sonuç veriyor; hafif model gerekirse iyi bir aday.
+4. Tüm modellerde en büyük hata 18-19 yaş bandındadır (1,50–1,79 yıl). Olası bir sebep, diş gelişiminin bu yaşlarda tamamlanmaya yaklaşması ve görüntüdeki yaş işaretlerinin azalmasıdır; bu mevcut deneyle kanıtlanmış değildir.
+5. Eğim 0,60–0,71 arasındadır; modeller küçük yaşları olduğundan büyük, büyük yaşları olduğundan küçük tahmin etme eğilimindedir. Bu sistematik hata, projede ölçülmek istenen hata kaynaklarından biridir.
 
 ### Sınırlılıklar
 
-- 294 görüntü, 9-19 yaş; 9-11 bandında 25 görüntü.
-- Aynı kişiye ait farklı görüntüler ayıklanamadı; sonuçlar olduğundan iyi görünebilir.
-- Yaşlar tam yıl; kusursuz modelde bile yaklaşık 0,25 yıl hata kalır.
-- Tek ayar, tek rastgele başlangıç.
-- Süre ölçümleri yaklaşıktır.
-- Dış doğrulama yapılmadı; adli kullanım için yeterli değildir.
+- Örneklem küçük (9-11 yaş bandında 25 görüntü) ve yaş aralığı dardır.
+- Görüntülerin büyük kısmı yaklaşık 400×187 piksel; ince yapılar kaybolmuş olabilir.
+- Aynı kişiye ait farklı görüntüler ayıklanamadığından sonuçlar olduğundan iyi görünebilir.
+- Yaşlar tam yıl olduğundan, modeller kusursuz olsa bile yaklaşık 0,25 yıllık bir hata kalır (yıl içinde eşit dağılım varsayımıyla).
+- Tüm modeller tek bir ayarla ve tek rastgele başlangıçla eğitildi. Her model için ayrı ayar yapılsa sıralama değişebilir.
+- Eğitim ve tahmin süreleri, çalışma kesintiye uğradığı ve bilgisayarda başka işlemler de yürütüldüğü için yalnızca yaklaşık değerlerdir (örneğin Xception 1. kat 10,4 dk).
+- Sonuçlar başka bir popülasyonda ya da cihazda sınanmadı. Bu sonuçlar adli kullanım için yeterli değildir.
+
+### Sonraki adımlar
+
+1. UFPE verisine erişim sağlamak ve aynı karşılaştırmayı bu veride tekrarlamak.
+2. Hatanın kaynağını anlamak için modellerin dişin hangi bölgelerine baktığını incelemek.
+3. El yapımı ölçütleri (Cameriere, Kvaal, pulpa-diş oranı) eklemeden önce, bunların gerektirdiği diş sınırlarının nasıl elde edileceğine karar vermek.
 """)
 nb['cells'] = cells
 nb.metadata['kernelspec'] = dict(name='python3', display_name='Python 3', language='python')

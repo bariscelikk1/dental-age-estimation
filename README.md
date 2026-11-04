@@ -1,8 +1,10 @@
 # Panoramik Röntgenden Dental Yaş Tahmini
 
+Bu çalışmada, panoramik diş röntgeninden yaş tahmini için beş CNN modeli aynı koşullarda karşılaştırılmıştır.
+
 TÜBİTAK 2209-A ön çalışması, 1. kısım · Hazırlayan: Nurullah Barış Çelik · Danışman: Prof. Dr. Selami Beyhan
 
-[Not defteri](dental_age_comparison.ipynb) · `dental_age_comparison.html`
+Yöntem ve sonuçların ayrıntıları [not defterinde](dental_age_comparison.ipynb) yer almaktadır. `dental_age_comparison.html` dosyası kurulum gerektirmeden tarayıcıda görüntülenebilir.
 
 ## Sonuçlar
 
@@ -17,13 +19,15 @@ Temizlik sonrası 294 görüntü, 9-19 yaş, 5 katlı çapraz doğrulama.
 | 5 | DenseNet-121 | 1,20 | 1,11–1,30 | 0,63 | %83,7 | 7,0 M |
 | – | *Taban çizgisi (tüm görüntüler için ortanca yaş)* | *2,04* | | *−0,15* | *%69,7* | |
 
-Friedman: χ² = 8,23, p = 0,084. Beş model arasında anlamlı fark yok. Dış doğrulama yapılmadı; adli kullanım için yeterli değildir.
+- Beş modelin tamamı, taban çizgisinin hatasını yaklaşık yarıya indirmektedir.
+- En düşük hata ConvNeXt-Tiny ile elde edilmiştir; ancak Friedman testi anlamlı bulunmamıştır (p = 0,084).
+- Sonuçlar, şu an erişilebilen Zenodo veri setinde elde edilmiştir ve ön sonuç niteliğindedir. Örneklem küçük, yaş aralığı dardır; dış doğrulama yapılmamıştır. Sonuçlar adli kullanım için yeterli değildir.
 
 ## Klasörler
 
 | Yol | İçerik |
 |---|---|
-| `dental_age_comparison.ipynb` | Çalıştırılmış not defteri |
+| `dental_age_comparison.ipynb` | Açıklamalı ve çalıştırılmış not defteri |
 | `dental_age_comparison.html` | Not defterinin kurulum gerektirmeyen kopyası |
 | `results/` | Özet tablo ve her modelin her katındaki sonuçlar |
 | `results_effnet_bug/` | EfficientNet-B0'ın düzeltme öncesi hatalı sonuçları (not defteri, Bölüm 11) |
