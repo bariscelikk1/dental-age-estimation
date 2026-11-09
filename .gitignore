@@ -11,3 +11,14 @@ data/
 results_dry/
 results_run.log
 teslim/
+
+# Model ağırlıkları (büyük)
+models/
+results_v2/run.log
+
+# Kör işaretleme anahtarı ve kesitler
+annot/key.csv
+annot/crops/
+annot/sheets/
+annot/pass1/
+annot/pass2/
